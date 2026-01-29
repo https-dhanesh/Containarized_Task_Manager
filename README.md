@@ -34,7 +34,6 @@
 ## 4. Project Structure
 The codebase is organized into modular services:
 
-    ```
     task-manager-app/
     ├── backend/                # FastAPI Application
     │   ├── app/
@@ -59,7 +58,7 @@ The codebase is organized into modular services:
     │   ├── nginx.conf          # Routing Rules
     │   └── Dockerfile
     └── docker-compose.yml      # Orchestration Config
-    ```
+
 
 5. Prerequisites & Setup
     Prerequisites
