@@ -72,19 +72,15 @@ The codebase is organized into modular services:
     Navigate to the root directory:
 
     Bash
-    ```
     cd task-manager-app
     Build and Run the Containers:
-    ```
 
     Bash
-    ```
     docker compose up --build
     Wait for all 6 containers to report "Running" in Docker Dashboard.
-    ```
 
-## 6. 
-    Accessing the Application - 
+## 6. Accessing the Application - 
+    
     Open your web browser and navigate to:
    
     http://localhost:8080
@@ -92,12 +88,12 @@ The codebase is organized into modular services:
 
 
 ## 7.  Workflow
-        Create a Task: Type "Generate Report" in the input box and click Add Task.
+    Create a Task: Type "Generate Report" in the input box and click Add Task.
 
-        View Status:
+    View Status:
 
-        PENDING: The task is saved in Postgres and sent to RabbitMQ.
+    PENDING: The task is saved in Postgres and sent to RabbitMQ.
 
-        PROCESSING: The Worker has picked up the task.
+    PROCESSING: The Worker has picked up the task.
 
-        DONE: The Worker has finished the task (after a 10-second simulated delay).
+    DONE: The Worker has finished the task (after a 10-second simulated delay).
