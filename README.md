@@ -60,7 +60,7 @@ The codebase is organized into modular services:
     └── docker-compose.yml      # Orchestration Config
 
 
-5. Prerequisites & Setup
+## 5. Prerequisites & Setup
     Prerequisites
     Docker Desktop must be installed and running.
 
@@ -83,21 +83,21 @@ The codebase is organized into modular services:
     Wait for all 6 containers to report "Running" in Docker Dashboard.
     ```
 
-6. How to Use
-    Accessing the Application
+## 6. 
+    Accessing the Application - 
     Open your web browser and navigate to:
    
     http://localhost:8080
 
 
 
-Workflow
-    Create a Task: Type "Generate Report" in the input box and click Add Task.
+## 7.  Workflow
+        Create a Task: Type "Generate Report" in the input box and click Add Task.
 
-    View Status:
+        View Status:
 
-    PENDING: The task is saved in Postgres and sent to RabbitMQ.
+        PENDING: The task is saved in Postgres and sent to RabbitMQ.
 
-    PROCESSING: The Worker has picked up the task.
+        PROCESSING: The Worker has picked up the task.
 
-    DONE: The Worker has finished the task (after a 10-second simulated delay).
+        DONE: The Worker has finished the task (after a 10-second simulated delay).
