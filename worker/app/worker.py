@@ -7,12 +7,20 @@ from . import database, models
 
 rabbitmq_url = os.getenv("RABBITMQ_URL", "amqp://guest:guest@rabbitmq:5672/")
 params = pika.URLParameters(rabbitmq_url)
-connection = pika.BlockingConnection(params)
+while True:
+    try:
+        connection = pika.BlockingConnection(params)
+        channel = connection.channel()
+        print(" Connected to RabbitMQ successfully!")
+        break
+    except pika.exceptions.AMQPConnectionError:
+        print("RabbitMQ not ready yet. Retrying in 5 seconds...")
+        time.sleep(5)
 channel = connection.channel()
 
 channel.queue_declare(queue='task_queue', durable=True)
 
-print(" [*] Worker waiting for tasks. To exit press CTRL+C")
+print(" Worker waiting for tasks. To exit press CTRL+C")
 
 def callback(ch, method, properties, body):
     print(f" Received {body}")
@@ -33,7 +41,7 @@ def callback(ch, method, properties, body):
 
             task.status = "DONE"
             db.commit()
-            print(f" [x] Task {task_id} marked as DONE")
+            print(f" Task {task_id} marked as DONE")
         
     except Exception as e:
         print(f"Error processing task: {e}")
